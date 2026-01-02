@@ -52,10 +52,8 @@ struct ApiError {
     message: String,
 }
 
-#[derive(Debug, Deserialize)]
-struct IpResponse {
-    ip: String,
-}
+// Remove the IpResponse struct since we're getting plain text
+// We'll use a simple string for IP responses
 
 struct CloudflareClient {
     client: reqwest::Client,
@@ -173,15 +171,23 @@ async fn get_public_ip(ip_type: &str) -> Result<String> {
     let client = reqwest::Client::new();
     
     let url = match ip_type {
-        "A" => "https://api.ipify.org?format=json",
-        "AAAA" => "https://api64.ipify.org?format=json",
+        "A" => "https://ipinfo.io/ip",
+        "AAAA" => "https://ifconfig.me/ip",
         _ => anyhow::bail!("Unsupported record type: {}", ip_type),
     };
 
     let response = client.get(url).send().await?;
-    let ip_response: IpResponse = response.json().await?;
+    let ip = response.text().await?;
     
-    Ok(ip_response.ip)
+    // Remove any whitespace or newlines
+    let ip = ip.trim().to_string();
+    
+    // Validate IP format
+    if ip.is_empty() {
+        anyhow::bail!("Empty IP response");
+    }
+    
+    Ok(ip)
 }
 
 #[tokio::main]
