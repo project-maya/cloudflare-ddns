@@ -1,0 +1,11 @@
+cloudflare:
+  api_token: "YOUR_API_TOKEN_HERE"
+  zone_id: "YOUR_ZONE_ID_HERE"
+  
+records:
+  - name: "example.com"
+    type: "A"
+  - name: "subdomain.example.com"
+    type: "A"
+  - name: "example.com"
+    type: "AAAA"
