@@ -5,7 +5,7 @@
 Cargo.lock
 
 # Configuration (contains secrets)
-config.yml
+config.override.yml
 
 # IDE
 .vscode/
