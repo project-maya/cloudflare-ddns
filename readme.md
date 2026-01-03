@@ -2,6 +2,9 @@
 
 A Rust-based dynamic DNS (DDNS) client that automatically updates your Cloudflare DNS records with your current public IP address. Supports both IPv4 (A records) and IPv6 (AAAA records).
 
+[![GitHub release](https://img.shields.io/github/release/YOUR_USERNAME/cloudflare-ddns.svg)](https://github.com/YOUR_USERNAME/cloudflare-ddns/releases)
+[![Build Status](https://github.com/YOUR_USERNAME/cloudflare-ddns/workflows/Release/badge.svg)](https://github.com/YOUR_USERNAME/cloudflare-ddns/actions)
+
 ## Features
 
 - 🔄 Automatic IP detection (IPv4 and IPv6)
