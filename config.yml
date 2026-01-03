@@ -1,3 +1,4 @@
+# do not override this file
 cloudflare:
   api_token: "YOUR_API_TOKEN_HERE"
   zone_id: "YOUR_ZONE_ID_HERE"
